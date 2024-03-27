@@ -1,7 +1,8 @@
 import { createAppSlice } from "@/lib/createAppSlice";
 import type { AppThunk } from "@/lib/store";
-import type { PayloadAction } from "@reduxjs/toolkit";
+import { PayloadAction } from "@reduxjs/toolkit";
 import { fetchCount } from "./counterAPI";
+
 
 export interface CounterSliceState {
   value: number;
@@ -21,6 +22,8 @@ export const counterSlice = createAppSlice({
   // The `reducers` field lets us define reducers and generate associated actions
   reducers: (create) => ({
     increment: create.reducer((state) => {
+      console.log('Entering....');
+      
       // Redux Toolkit allows us to write "mutating" logic in reducers. It
       // doesn't actually mutate the state because it uses the Immer library,
       // which detects changes to a "draft state" and produces a brand new
@@ -31,7 +34,7 @@ export const counterSlice = createAppSlice({
       state.value -= 1;
     }),
     // Use the `PayloadAction` type to declare the contents of `action.payload`
-    incrementByAmount: create.reducer(
+    incrementByAmount: create.reducer(  
       (state, action: PayloadAction<number>) => {
         state.value += action.payload;
       },
@@ -87,3 +90,5 @@ export const incrementIfOdd =
       dispatch(incrementByAmount(amount));
     }
   };
+
+  export const counterReducer = counterSlice.reducer;

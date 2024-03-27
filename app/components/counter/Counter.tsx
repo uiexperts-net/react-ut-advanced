@@ -27,16 +27,18 @@ export const Counter = () => {
     <div>
       <div className={styles.row}>
         <button
+          data-testid='#minus'
           className={styles.button}
           aria-label="Decrement value"
           onClick={() => dispatch(decrement())}
         >
           -
         </button>
-        <span aria-label="Count" className={styles.value}>
+        <span data-testid='#val' aria-label="Count" className={styles.value}>
           {count}
         </span>
         <button
+          data-testid="#plus"
           className={styles.button}
           aria-label="Increment value"
           onClick={() => dispatch(increment())}
