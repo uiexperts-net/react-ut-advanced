@@ -44,3 +44,11 @@ node --inspect-brk node_modules/.bin/jest --runInBand
     }
   ]
 }
+
+
+## Debug
+
+node --inspect-brk node_modules/.bin/jest --runInBand 
+
+Debug with chrome 
+chrome://inspect
