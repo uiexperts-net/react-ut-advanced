@@ -1,46 +1,82 @@
 
-# Redux Toolkit TypeScript Example
+# ReactJS Unit Testing (Advanced)
 
-This example shows how to integrate Next.js with [Redux Toolkit](https://redux-toolkit.js.org).
+1. Redux Unit Testing with React Testing Library
+2. Redux Unit Testing without UI
+3. Demo on End-End Testing with Cypress
 
-**Redux Toolkit**(also known as "RTK" for short) provides a standardized way to write Redux logic. It includes utilities that help simplify many common use cases, including [store setup](https://redux-toolkit.js.org/api/configureStore), [creating reducers and writing immutable update logic](https://redux-toolkit.js.org/api/createreducer), and even [creating entire "slices" of state at once](https://redux-toolkit.js.org/api/createslice). This example showcases each of these features in conjunction with Next.js.
 
-## Deploy Your Own
+***
 
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example):
+### 1. Redux Unit Testing with React Testing Library
+The Redux Unit Testing is performed with end-end integration with React Application. The unit test case will create a wrapper with Provider and helps for store setup.
+Hence testing can be done with user actions through events. Refer counter.test.tsx file
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/vercel/next.js/tree/canary/examples/with-redux&project-name=with-redux&repository-name=with-redux)
+```
+npm run test -- counter.test
+```
+***
 
-## How to Use
-
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init), [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/), or [pnpm](https://pnpm.io) to bootstrap the example:
-
-```bash
-npx create-next-app --example with-redux with-redux-app
+### 2. Redux Unit Testing without UI
+The Redux unit testing can be done without UI by using the Redux Store. Refer counter-slice.test.ts
+```
+npm run test -- counter.slice
 ```
 
-```bash
-yarn create next-app --example with-redux with-redux-app
+
+## JEST Code Coverage Report
+
+The code coverage can be achieved with below command
+
+```
+npm run test -- --coverage
+```
+### 1. JEST Code Coverage
+<img src="./public/CodeCoverage_JEST_Report.png" width="800" height="400">
+
+### 2. Istanbul Code Coverage
+The Code coverage report will be generaged in / coverage/Icov-report/index.html
+
+
+***
+## Demo on E2E Testing with Cypress
+
+### Install Cypress
+
+```
+npm install cypress --save-dev
+npm install --save-dev cypress @testing-library/cypress
 ```
 
-```bash
-pnpm create next-app --example with-redux with-redux-app
+### Run Cypress for E2E Testing
+
+Step 1: Run Web Server
+
+```
+npm run dev
 ```
 
-Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
+Step 2: Launch Cypress console
 
+```
+npx cypress open
+```
+       (or)
+```
+ npm run cypress:open
+```
+Step 3: Choose E2E Testing option
+Step 4: Choose a Browser (chrome is preferred)
+Step 5: Press 'Start E2E Testing in Chrome'
+Step 6: Select 'spec.cy.ts' file to run the testing
 
-# Debugging
-node --inspect-brk node_modules/.bin/jest --runInBand
+***
+## Debug
 
-{
-  "version": "0.2.0",
-  "configurations": [
-    {
-      "type": "node",
-      "request": "attach",
-      "name": "Attach",
-      "port": 9229
-    }
-  ]
-}
+Run below command to enable debug mode with chrome browser
+```
+node --inspect-brk node_modules/.bin/jest --runInBand 
+```
+
+Debug with chrome using  chrome://inspect
+***

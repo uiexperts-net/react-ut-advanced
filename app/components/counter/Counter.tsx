@@ -24,7 +24,8 @@ export const Counter = () => {
   const incrementValue = Number(incrementAmount) || 0;
 
   return (
-    <div>
+    <div className={styles.counterContainer}>
+      <h2>Counter</h2>
       <div className={styles.row}>
         <button
           data-testid='#minus'
@@ -34,10 +35,10 @@ export const Counter = () => {
         >
           -
         </button>
-        <span data-testid='#val' aria-label="Count" className={styles.value}>
+        <span role='display-counter' aria-label="Count" className={styles.value}>
           {count}
         </span>
-        <button
+        <button          
           data-testid="#plus"
           className={styles.button}
           aria-label="Increment value"
@@ -51,31 +52,18 @@ export const Counter = () => {
           className={styles.textbox}
           aria-label="Set increment amount"
           value={incrementAmount}
-          type="number"
+          data-testid="incr-value"
+          
           onChange={(e) => {
             setIncrementAmount(e.target.value);
           }}
         />
         <button
+        data-testid="#incr-amt"
           className={styles.button}
           onClick={() => dispatch(incrementByAmount(incrementValue))}
         >
           Add Amount
-        </button>
-        <button
-          className={styles.asyncButton}
-          disabled={status !== "idle"}
-          onClick={() => dispatch(incrementAsync(incrementValue))}
-        >
-          Add Async
-        </button>
-        <button
-          className={styles.button}
-          onClick={() => {
-            dispatch(incrementIfOdd(incrementValue));
-          }}
-        >
-          Add If Odd
         </button>
       </div>
     </div>
