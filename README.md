@@ -41,6 +41,15 @@ The Code coverage report will be generaged in / coverage/Icov-report/index.html
 ***
 ## Demo on E2E Testing with Cypress
 
+### Install Cypress
+
+```
+npm install cypress --save-dev
+npm install --save-dev cypress @testing-library/cypress
+```
+
+### Run Cypress for E2E Testing
+
 Step 1: Run Web Server
 
 ```
